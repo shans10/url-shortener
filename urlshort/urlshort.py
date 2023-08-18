@@ -42,10 +42,9 @@ def your_url():
             absolute_path = os.path.dirname(__file__)
             relative_path = "static/user_files/"
             full_path = os.path.join(absolute_path, relative_path)
-            f.save(
-                full_path
-                + full_name
-            )
+            if not os.path.exists(full_path):
+                os.makedirs(full_path)
+            f.save(full_path + full_name)
             urls[request.form["code"]] = {"file": full_name}
 
         with open("urls.json", "w") as url_file:
