@@ -39,8 +39,11 @@ def your_url():
         else:
             f = request.files["file"]
             full_name = request.form["code"] + secure_filename(f.filename)
+            absolute_path = os.path.dirname(__file__)
+            relative_path = "static/user_files/"
+            full_path = os.path.join(absolute_path, relative_path)
             f.save(
-                "/home/shan/Programming/Python/url-shortner/urlshort/static/user_files/"
+                full_path
                 + full_name
             )
             urls[request.form["code"]] = {"file": full_name}
