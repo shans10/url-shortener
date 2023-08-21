@@ -14,6 +14,7 @@ A url-shortener app made with flask.
 - [pipenv](https://pypi.org/project/pipenv/)
 
 ## 🛠 Usage
+### Standalone
 - Install python dependencies
 ```sh
 pipenv install
@@ -24,5 +25,14 @@ pipenv shell
 ```
 - Run app
 ```sh
-gunicorn "urlshort:create_app()
+gunicorn "urlshort:create_app()"
+```
+### Using Docker
+- Build docker image
+```sh
+docker build -t urlshort .
+```
+- Run a container from the image
+```sh
+docker run -p 8000:8000 urlshort
 ```
